@@ -1,5 +1,5 @@
 [package]
-name = "rust-communicator"
+name = "rust_communicator"
 version = "0.1.0"
 edition = "2021"
 
