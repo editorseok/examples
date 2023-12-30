@@ -14,7 +14,7 @@ const TextsTest = () => {
         <p className="text-xl italic text-center text-gray-300 text-bold">
           {D.randomName()}
         </p>
-        <Paragraph numberOfLines={2}>{paragraphs}</Paragraph>
+        <Paragraph numberOfLines={3}>{paragraphs}</Paragraph>
         <Summary className="text-center text-gray-300">{summary}</Summary>
         <p className="text-center text-pink-400">
           {D.randomDayMonthYear()} ({D.randomRelativeDate()})
