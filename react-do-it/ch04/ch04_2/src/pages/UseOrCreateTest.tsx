@@ -1,13 +1,13 @@
 import { Avatar, Title } from '../components';
-import { useOrCreate } from './useOrCreate';
 import * as D from '../data';
+import { useOrCreate } from './useOrCreate';
 
 const UseOrCreateTest = () => {
   const headTexts = useOrCreate<string[]>('headTexts', () => [
-    'No.',
+    'No',
     'Name',
     'Job Title',
-    'Email Adress',
+    'Email Address',
   ]);
   const users = useOrCreate<D.IUser[]>('users', () =>
     D.makeArray(100).map(D.makeRandomUser),
@@ -28,14 +28,13 @@ const UseOrCreateTest = () => {
       </tr>
     )),
   );
+
   return (
     <div className="mt-4">
-      <Title>CreateOrUseTest</Title>
+      <Title>UseOrCreateTest</Title>
       <div className="p-4 mt-4 overflow-x-auto">
-        <table className="table w-full table-zebra table-compact">
-          <thead>
-            <tr>{head}</tr>
-          </thead>
+        <table className="table w-full table-zebra">
+          <thead>{head}</thead>
           <tbody>{body}</tbody>
         </table>
       </div>

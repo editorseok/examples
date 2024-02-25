@@ -1,7 +1,43 @@
-import React from 'react';
+import { ChangeEvent, useCallback, useMemo, useState } from 'react';
+import { Subtitle, Title } from '../components';
+import * as D from '../data';
 
-const RadioInputTest = () => {
-  return <div>RadioInputTest</div>;
-};
+export default function RadioInputTest() {
+  const jobTitles = useMemo(() => D.makeArray(4).map(D.randomJobTitle), []);
+  const [selectedJobTitle, setSelectedJobTitle] = useState<string>(
+    jobTitles[0],
+  );
+  const onChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+    setSelectedJobTitle(_ => e.target.value);
+  }, []);
+  const radioInputs = useMemo(
+    () =>
+      jobTitles.map((value, index) => (
+        <label key={index} className="flex justify-start cursor-pointer label">
+          <input
+            className="mr-4 radio radio-primary"
+            type="radio"
+            name="job"
+            defaultValue={value}
+            checked={value === selectedJobTitle}
+            onChange={onChange}
+          />
+          <span className="label-text">{value}</span>
+        </label>
+      )),
+    [jobTitles, selectedJobTitle, onChange],
+  );
 
-export default RadioInputTest;
+  return (
+    <section className="mt-4">
+      <Title>RadioInputTest</Title>
+      <div className="flex flex-col justify-center mt-4">
+        <Subtitle>What is your job?</Subtitle>
+        <Subtitle className="mt-4">Selected Job: </Subtitle>
+        <div className="flex justify-center p-4 mt-4">
+          <div className="flex flex-col mt-4">{radioInputs}</div>
+        </div>
+      </div>
+    </section>
+  );
+}

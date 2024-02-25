@@ -1,6 +1,7 @@
 import { useMemo } from 'react';
 import { Avatar, Title } from '../components';
 import * as D from '../data';
+import { useOrCreate } from './useOrCreate';
 
 const Memo = () => {
   const headTexts = useMemo<string[]>(
@@ -11,7 +12,6 @@ const Memo = () => {
     () => D.makeArray(100).map(D.makeRandomUser),
     [],
   );
-
   const head = useMemo(
     () => headTexts.map(text => <th key={text}>{text}</th>),
     [headTexts],
@@ -37,9 +37,7 @@ const Memo = () => {
       <Title>Memo</Title>
       <div className="p-4 mt-4 overflow-x-auto">
         <table className="table w-full table-zebra">
-          <thead>
-            <tr>{head}</tr>
-          </thead>
+          <thead>{head}</thead>
           <tbody>{body}</tbody>
         </table>
       </div>

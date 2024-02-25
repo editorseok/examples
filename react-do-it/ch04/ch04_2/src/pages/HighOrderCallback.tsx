@@ -1,14 +1,13 @@
-import { useCallback, useMemo } from 'react';
-import { Title } from '../components';
 import * as D from '../data';
+import { useCallback, useMemo } from 'react';
 import { Button } from '../theme/daisyui';
+import { Title } from '../components';
 
-const HighOrderCallback = () => {
+export default function HighOrderCallback() {
   const onClick = useCallback(
-    (name: string) => () => alert(`${name} clicked`),
+    (name: string) => () => alert(`${name}button clicked`),
     [],
   );
-
   const buttons = useMemo(
     () =>
       D.makeArray(3)
@@ -25,11 +24,9 @@ const HighOrderCallback = () => {
   );
 
   return (
-    <div className="mt-4">
-      <Title>Callback</Title>
+    <section className="mt-4">
+      <Title>HighOrderCallback</Title>
       <div className="flex mt-4 justify-evenly">{buttons}</div>
-    </div>
+    </section>
   );
-};
-
-export default HighOrderCallback;
+}

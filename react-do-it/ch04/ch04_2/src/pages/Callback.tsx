@@ -1,11 +1,10 @@
-import { useCallback, useMemo } from 'react';
-import { Title } from '../components';
 import * as D from '../data';
+import { useCallback, useMemo } from 'react';
 import { Button } from '../theme/daisyui';
+import { Title } from '../components';
 
-const Callback = () => {
+export default function Callback() {
   const onClick = useCallback(() => alert('button clicked'), []);
-
   const buttons = useMemo(
     () =>
       D.makeArray(3)
@@ -22,11 +21,9 @@ const Callback = () => {
   );
 
   return (
-    <div className="mt-4">
+    <section className="mt-4">
       <Title>Callback</Title>
       <div className="flex mt-4 justify-evenly">{buttons}</div>
-    </div>
+    </section>
   );
-};
-
-export default Callback;
+}
