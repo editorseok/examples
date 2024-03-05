@@ -7,7 +7,6 @@ export const useWindowResize = () => {
   useEffect(() => {
     setWidthHeight(_ => [window.innerWidth, window.innerHeight]);
   }, []);
-
   useEventListener(window, 'resize', () => {
     setWidthHeight(_ => [window.innerWidth, window.innerHeight]);
   });
