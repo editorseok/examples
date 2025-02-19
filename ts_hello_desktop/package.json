@@ -1,0 +1,83 @@
+{
+  "name": "ts_hello_desktop",
+  "version": "0.1.0",
+  "description": "ts_hello_desktop",
+  "author": "heeseok.j",
+  "private": true,
+  "dependencies": {
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.1.0",
+    "@testing-library/user-event": "^13.2.1",
+    "@types/jest": "^27.0.1",
+    "@types/node": "^16.7.13",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "electron-is-dev": "^3.0.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-scripts": "5.0.1",
+    "typescript": "^4.4.2",
+    "web-vitals": "^2.1.0"
+  },
+  "type": "module",
+  "main": "public/electron.js",
+  "homepage": ".",
+  "scripts": {
+    "react-start": "react-scripts start",
+    "react-build": "react-scripts build",
+    "start": "concurrently -n renderer,main \"cross-env NODE_ENV=development BROWSER=none yarn react-start\" \"wait-on http://localhost:3000 && electron .\"",
+    "build": "yarn react-build && electron-builder",
+    "build:dir": "yarn react-build && electron-builder --dir",
+    "build:win": "yarn react-build && electron-builder --win --x64"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2",
+    "cross-env": "^7.0.3",
+    "electron": "^34.2.0",
+    "electron-builder": "^25.1.8",
+    "wait-on": "^8.0.2"
+  },
+  "build": {
+    "files": [
+      "**/*"
+    ],
+    "productName": "ts_hello_desktop",
+    "appId": "com.electron.ts_hello_desktop",
+    "asar": true,
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64",
+            "ia32"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": false,
+      "createDesktopShortcut": true
+    }
+  }
+}
