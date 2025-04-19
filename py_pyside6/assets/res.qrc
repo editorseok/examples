@@ -3141,7 +3141,7 @@
     <file>icons/thumb-small.png</file>
     <file>icons/thumb-small-up.png</file>
     <file>icons/thumb-up.png</file>
-    <file>icons/tick.png</file>
+    <file alias="tick.png">icons/tick.png</file>
     <file>icons/tick-button.png</file>
     <file>icons/tick-circle.png</file>
     <file>icons/tick-circle-frame.png</file>
