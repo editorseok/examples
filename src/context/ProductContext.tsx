@@ -4,20 +4,32 @@ import React, {
   useContext,
   useState,
 } from 'react';
+import { ProductType } from './Product.type';
 
 interface ProductContextType {
-  productId: number;
-  setProductId: React.Dispatch<React.SetStateAction<number>>;
+  loading: boolean;
+  error: Error | null;
+  products: ProductType[];
+  setProducts: React.Dispatch<React.SetStateAction<ProductType[]>>;
 }
 
 const ProductContext = createContext<ProductContextType | undefined>(undefined);
 
 export const ProductProvider = ({ children }: PropsWithChildren) => {
-  const [productId, setProductId] = useState<number>(0);
+  const [products, setProducts] = useState<ProductType[]>([]);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [loading, setLoading] = useState<boolean>(false);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [error, setError] = useState<Error | null>(null);
 
   return (
     <ProductContext.Provider
-      value={{ productId: productId, setProductId: setProductId }}>
+      value={{
+        loading,
+        error,
+        products,
+        setProducts,
+      }}>
       {children}
     </ProductContext.Provider>
   );
